@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('https://wallpaperaccess.com/full/1567674.jpg'); /* Add the new background image URL here */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            margin-bottom: 15px;
+            padding: 20px; /* Add more padding for better visual appearance */
+            background-color: white;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvqKhnlYaL-43yXWivddDMsWaPoQ-5AAQ2Pw&usqp=CAU'); /* Add the new background image URL here */
+            background-size: cover;
+            border-radius: 8px;
+            max-width: 500px; /* Limit the maximum width of the container */
+            width: 100%; /* Set the container to take the full available width */
+            box-sizing: border-box; /* Include padding and border in the width */
+            overflow: scroll;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        textarea, input, select {
+            width: 100%; /* Set the input elements to take the full available width */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding and border in the width */
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px; /* Add margin below the heading */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Code Converter</h1>
+        <form action="/generate/" method="post"> <!-- Updated action URL -->
+            <div class="container">
+                <label for="input-type">Input Type:</label>
+                <select id="input-type" name="input-type">
+                    <option value="statement">Statement</option>
+                    <option value="code">Code</option>
+                </select>
+            </div>
+            <div class="container">
+                <label for="code">Code:</label>
+                <textarea id="code" name="prompt" rows="15" cols="50"></textarea> <!-- Changed name to match Item model -->
+            </div>
+            <div class="container">
+                <label for="language">Language:</label>
+                <input type="text" id="language" name="language" placeholder="Enter language here">
+            </div>
+            <div class="container">
+                <input type="submit" value="Translate or Getcode">
+            </div>
+        </form>
+        {% if content %}
+        <div class="container">
+            <h2>Converted Code:</h2>
+            <pre>{{ content }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
