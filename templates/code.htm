@@ -2,82 +2,111 @@
 <html>
 <head>
     <title>Code Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-image: url('https://wallpaperaccess.com/full/1567674.jpg'); /* Add the new background image URL here */
+            background-image: url('https://wallpaperaccess.com/full/1567674.jpg');
             background-size: cover;
             background-repeat: no-repeat;
+            color: #333;
         }
 
         .container {
-            margin-bottom: 15px;
-            padding: 20px; /* Add more padding for better visual appearance */
-            background-color: white;
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvqKhnlYaL-43yXWivddDMsWaPoQ-5AAQ2Pw&usqp=CAU'); /* Add the new background image URL here */
-            background-size: cover;
-            border-radius: 8px;
-            max-width: 500px; /* Limit the maximum width of the container */
-            width: 100%; /* Set the container to take the full available width */
-            box-sizing: border-box; /* Include padding and border in the width */
-            overflow: scroll;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #444;
         }
 
         label {
-            font-weight: bold;
-            margin-right: 10px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
         }
 
         textarea, input, select {
-            width: 100%; /* Set the input elements to take the full available width */
+            width: 100%;
             padding: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            box-sizing: border-box; /* Include padding and border in the width */
-            margin-bottom: 10px;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
 
         textarea {
             resize: vertical;
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px; /* Add margin below the heading */
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Code Converter</h1>
-        <form action="/generate/" method="post"> <!-- Updated action URL -->
-            <div class="container">
+        <form action="/generate/" method="post">
+            <div>
                 <label for="input-type">Input Type:</label>
                 <select id="input-type" name="input-type">
                     <option value="statement">Statement</option>
                     <option value="code">Code</option>
                 </select>
             </div>
-            <div class="container">
+            <div>
                 <label for="code">Code:</label>
-                <textarea id="code" name="prompt" rows="15" cols="50"></textarea> <!-- Changed name to match Item model -->
+                <textarea id="code" name="prompt" rows="10" placeholder="Enter code or statement here..."></textarea>
             </div>
-            <div class="container">
+            <div>
                 <label for="language">Language:</label>
-                <input type="text" id="language" name="language" placeholder="Enter language here">
+                <input type="text" id="language" name="language" placeholder="Enter target language here...">
             </div>
-            <div class="container">
-                <input type="submit" value="Translate or Getcode">
+            <div>
+                <input type="submit" value="Translate or Get Code">
             </div>
         </form>
         {% if content %}
-        <div class="container">
+        <div class="result-container">
             <h2>Converted Code:</h2>
             <pre>{{ content }}</pre>
         </div>
